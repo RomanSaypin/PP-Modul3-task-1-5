@@ -25,9 +25,19 @@ public class AdminController {
         return userService.listUser();
     }
 
-    @GetMapping("/{id}")
+    @GetMapping("adminUser")
+    public User admin() {
+        return userService.getUser(1).get();
+    }
+
+    @GetMapping("/user/{id}")
     public User getUser(@PathVariable long id) {
       return userService.getUser(id).get();
+    }
+
+    @GetMapping("/roles")
+    public List<Role> roles() {
+        return roleService.listRoles();
     }
 
     @PostMapping("/add")
@@ -36,12 +46,12 @@ public class AdminController {
         userService.saveUser(user);
     }
 
-    @PutMapping("/update")
+    @PutMapping("/up")
     public void updateUser(@RequestBody User user) {
         userService.saveUser(user);
     }
 
-    @DeleteMapping("/{id}")
+    @DeleteMapping("/del/{id}")
     public void deleteUser(@PathVariable long id) {
         userService.deleteUser(id);
     }

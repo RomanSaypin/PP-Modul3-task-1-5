@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>User Info</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}"/>
+</head>
+<body>
+<!--Шапка-->
+<nav class="navbar navbar-dark bg-dark">
+    <div class="container-fluid">
+        <div>
+            <a class="navbar-brand">
+                <strong id="navbar-email">
+                </strong>
+                with roles:
+                <span id="navbar-roles"></span>
+            </a>
+        </div>
+        <div class="navbar-nav">
+            <a class="nav-link" href="/login?logout">Logout</a>
+        </div>
+    </div>
+</nav>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-2 pt-3 g-0"><!--Навигация-->
+            <div class="nav flex-column nav-pills" role="tablist">
+                <a class="nav-link active text-center" data-bs-toggle="pill" href="#" role="tab">User</a>
+            </div>
+        </div><!--Навигация-->
+        <div class="col-sm-10 bg-light min-vh-100 pt-3">
+            <div class="container-fluid">
+                <h1>User information-page</h1>
+            </div>
+            <div class="card">
+                <div class="card-header">
+                    <h5><span class="align-middle">About user</span></h5>
+                </div>
+                <div class="card-body table-responsive">
+                    <table class="table table-striped">
+                        <thead>
+                        <tr>
+                            <th>Id</th>
+                            <th>First Name</th>
+                            <th>Last Name</th>
+                            <th>E-mail</th>
+                            <th>Role</th>
+                        </tr>
+                        </thead>
+                        <tbody id="user-info-table"></tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="/user.js"></script>
+</body>
+</html>

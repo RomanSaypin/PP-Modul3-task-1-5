@@ -4,7 +4,7 @@
 #
 #GET http://localhost:8080/api/admin/2
 
-
+#
 POST http://localhost:8080/api/admin/add
 Content-Type: application/json
 
@@ -18,3 +18,21 @@ Content-Type: application/json
   }]
 }
 
+#PUT http://localhost:8080/api/admin/update
+#Content-Type: application/json
+#
+#{
+#  "id": 1,
+#  "firstName": "Tony",
+#  "lastName": "Stark",
+#  "email": "tonySt@gmai.com",
+#  "password": "100",
+#  "roles": [
+#    {
+#      "id": 1,
+#      "role": "ADMIN"
+#    }
+#  ]
+#}
+
+#DELETE http://localhost:8080/api/admin/4
