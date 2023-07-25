@@ -28,6 +28,11 @@ public class UserServiceImp implements UserService {
     }
 
     @Override
+    public Optional<User> getUser(String name) {
+        return repository.findByUsername(name);
+    }
+
+    @Override
     @Transactional
     public void saveUser(User user) {
         repository.save(user);

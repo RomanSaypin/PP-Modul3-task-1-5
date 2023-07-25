@@ -31,7 +31,8 @@ public class UserInit {
         tony.addRole(admin);
         User ben = new User("Ben", "Anderson", "ben@gmail.com", "101");
         ben.addRole(user);
-        if (userService.getUser(tony.getId()).isEmpty() && userService.getUser(ben.getId()).isEmpty()) {
+
+        if (userService.getUser(tony.getFirstName()).isEmpty() && userService.getUser(ben.getFirstName()).isEmpty()) {
             userService.saveUser(tony);
             userService.saveUser(ben);
         }
