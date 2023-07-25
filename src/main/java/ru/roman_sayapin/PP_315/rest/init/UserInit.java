@@ -18,18 +18,15 @@ public class UserInit {
     public UserInit(UserService service, RoleService roleService) {
         this.userService = service;
         this.roleService = roleService;
-        ;
     }
 
     @PostConstruct
     private void init() {
+        User tony = new User("Tony", "Stark", "tony@gmai.com", "100");
+        User ben = new User("Ben", "Anderson", "ben@gmail.com", "101");
         Role admin = new Role("ADMIN");
         Role user = new Role("USER");
-//        roleService.saveRole(admin);
-//        roleService.saveRole(user);
-        User tony = new User("Tony", "Stark", "tony@gmai.com", "100");
         tony.addRole(admin);
-        User ben = new User("Ben", "Anderson", "ben@gmail.com", "101");
         ben.addRole(user);
 
         if (userService.getUser(tony.getFirstName()).isEmpty() && userService.getUser(ben.getFirstName()).isEmpty()) {

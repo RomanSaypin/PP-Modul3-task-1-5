@@ -12,9 +12,11 @@ import java.util.Optional;
 public class UserServiceImp implements UserService {
 
     private final UserRepository repository;
+    private final RoleService roleService;
 
-    public UserServiceImp(UserRepository repository) {
+    public UserServiceImp(UserRepository repository, RoleService roleService) {
         this.repository = repository;
+        this.roleService = roleService;
     }
 
     @Override
@@ -37,6 +39,7 @@ public class UserServiceImp implements UserService {
     public void saveUser(User user) {
         repository.save(user);
     }
+
 
     @Override
     @Transactional

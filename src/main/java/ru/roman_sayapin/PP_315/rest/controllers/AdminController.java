@@ -30,12 +30,13 @@ public class AdminController {
       return userService.getUser(id).get();
     }
 
-    @PostMapping("/users")
+    @PostMapping("/add")
     public void addUser(@RequestBody User user) {
+
         userService.saveUser(user);
     }
 
-    @PutMapping("/users")
+    @PutMapping("/update")
     public void updateUser(@RequestBody User user) {
         userService.saveUser(user);
     }
