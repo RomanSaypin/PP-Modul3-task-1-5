@@ -1,0 +1,15 @@
+#GET http://localhost:8080/api/admin/2
+
+
+POST http://localhost:8080/api/admin/users
+Content-Type: application/json
+
+{
+  "firstName": "Roman",
+  "lastName": "Sayapin",
+  "email": "roma@mail.ru",
+  "password": "103",
+  "roles": [{
+    "role": "ADMIN"
+  }]
+}
