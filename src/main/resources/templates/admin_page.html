@@ -7,5 +7,84 @@
 </head>
 <body>
 
+<nav class="navbar navbar-dark bg-dark"><!--Шапка-->
+  <div class="container-fluid">
+    <div>
+      <a class="navbar-brand">
+        <strong id="nav-email"></strong>
+        with roles:
+        <span id="nav-roles"></span>
+      </a>
+    </div>
+    <div class="navbar-nav">
+      <a class="nav-link" href="/login?logout">Logout</a>
+    </div>
+  </div>
+</nav><!--Шапка-->
+
+<div class="container-fluid"><!--Основа-->
+  <div class="row">
+
+    <div class="col-sm-2 pt-3 g-0"><!--Навигация-->
+      <ul class="nav flex-column nav-pills" role="tablist">
+        <li class="nav-item">
+          <a class="nav-link active text-center" data-bs-toggle="pill" href="#admin" role="tab">Admin</a>
+        </li>
+        <br>
+        <li class="nav-item">
+          <a class="nav-link active text-center" data-bs-toggle="pill" href="#user" role="tab">User</a>
+        </li>
+      </ul>
+    </div><!--Навигация-->
+
+    <div class="col-sm-10 bg-light min-vh-100 pt-3"><!--Правая часть страницы-->
+      <div class="tab-content" id="myTabContent">
+        <div class="tab-pane fade show active" id="admin" role="tabpanel" aria-labelledby="admin-tab"><!--Страница админа-->
+          <div class="container-fluid">
+            <h1>Admin panel</h1>
+          </div>
+
+          <ul class="nav nav-tabs" id="myTab" role="tablist"><!--Навигация по вкладкам-->
+            <li class="nav-item" role="presentation">
+              <button class="nav-link active" id="all-user-tab" data-bs-toggle="tab" data-bs-target="#all-users"
+                      type="button" role="tab" aria-controls="all-users" aria-selected="true">Users Table</button>
+            </li>
+            <li class="nav-item" role="presentation">
+              <button class="nav-link active" id="new-user-tab" data-bs-toggle="tab" data-bs-target="#new-user"
+                      type="button" role="tab" aria-controls="new-user" aria-selected="false">New User</button>
+            </li>
+          </ul><!--Навигация по вкладкам-->
+
+          <div class="tab-content" id="adminTabContent">
+            <div class="tab-pane fade show active" id="all-users" role="tabpanel" aria-labelledby="all-user-tab">
+              <div class="card" id="test"><!--Table users-->
+                <div class="card-header">
+                  <h5><span class="align-middle">All users</span></h5>
+                </div>
+                <div class="card-body table-responsive">
+                  <table class="table table-striped">
+                    <thead>
+                    <tr>
+                      <th>Id</th>
+                      <th>First Name</th>
+                      <th>Last Name</th>
+                      <th>E-mail</th>
+                      <th>Role</th>
+                      <th>Edit</th>
+                      <th>Delete</th>
+                    </tr>
+                    </thead>
+                    <tbody id="users-table"></tbody>
+                  </table>
+                </div>
+              </div><!--Table users-->
+            </div>
+          </div>
+        </div><!--Страница админа-->
+      </div>
+    </div><!--Правая часть страницы-->
+  </div>
+</div><!--Основа-->
+<script src="/admin.js"></script>
 </body>
 </html>
