@@ -30,6 +30,8 @@ public class UserInit {
         ben.addRole(user);
 
         if (userService.getUser(tony.getFirstName()).isEmpty() && userService.getUser(ben.getFirstName()).isEmpty()) {
+            roleService.saveRole(admin);
+            roleService.saveRole(user);
             userService.saveUser(tony);
             userService.saveUser(ben);
         }

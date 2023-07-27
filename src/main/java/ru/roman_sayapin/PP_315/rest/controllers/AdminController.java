@@ -46,13 +46,14 @@ public class AdminController {
         userService.saveUser(user);
     }
 
-    @PutMapping("/up")
+    @PatchMapping("/up")
     public void updateUser(@RequestBody User user) {
         userService.saveUser(user);
     }
 
-    @DeleteMapping("/del/{id}")
+    @DeleteMapping("/{id}")
     public void deleteUser(@PathVariable long id) {
+
         userService.deleteUser(id);
     }
 }
