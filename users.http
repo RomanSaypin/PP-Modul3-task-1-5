@@ -18,7 +18,7 @@ Content-Type: application/json
   }]
 }
 
-#PUT http://localhost:8080/api/admin/update
+#PUT http://localhost:8080/api/admin/up
 #Content-Type: application/json
 #
 #{

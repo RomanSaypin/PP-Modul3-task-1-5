@@ -6,6 +6,7 @@ import ru.roman_sayapin.PP_315.rest.entity.User;
 import ru.roman_sayapin.PP_315.rest.service.RoleService;
 import ru.roman_sayapin.PP_315.rest.service.UserService;
 
+import java.security.Principal;
 import java.util.List;
 
 @RestController
@@ -26,8 +27,8 @@ public class AdminController {
     }
 
     @GetMapping("adminUser")
-    public User admin() {
-        return userService.getUser(1).get();
+    public User admin(Principal principal) {
+        return userService.getUser(principal.getName()).get();
     }
 
     @GetMapping("/user/{id}")
@@ -42,7 +43,6 @@ public class AdminController {
 
     @PostMapping("/add")
     public void addUser(@RequestBody User user) {
-
         userService.saveUser(user);
     }
 
@@ -53,7 +53,6 @@ public class AdminController {
 
     @DeleteMapping("/{id}")
     public void deleteUser(@PathVariable long id) {
-
         userService.deleteUser(id);
     }
 }

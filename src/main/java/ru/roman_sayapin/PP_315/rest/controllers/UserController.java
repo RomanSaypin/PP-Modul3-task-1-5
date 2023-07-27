@@ -6,6 +6,8 @@ import org.springframework.web.bind.annotation.RestController;
 import ru.roman_sayapin.PP_315.rest.entity.User;
 import ru.roman_sayapin.PP_315.rest.service.UserService;
 
+import java.security.Principal;
+
 @RestController
 @RequestMapping("/api/user")
 public class UserController {
@@ -17,7 +19,7 @@ public class UserController {
     }
 
     @GetMapping("/")
-    public User getUser() {
-        return service.getUser(2).get();
+    public User getUser(Principal principal) {
+        return service.getUser(principal.getName()).get();
     }
 }

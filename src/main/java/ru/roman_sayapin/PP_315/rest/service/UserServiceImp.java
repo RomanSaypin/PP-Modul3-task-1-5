@@ -1,5 +1,10 @@
 package ru.roman_sayapin.PP_315.rest.service;
 
+import org.springframework.context.annotation.Lazy;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import ru.roman_sayapin.PP_315.rest.entity.User;
 import ru.roman_sayapin.PP_315.rest.repositories.UserRepository;
@@ -9,14 +14,15 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-public class UserServiceImp implements UserService {
+public class UserServiceImp implements UserService, UserDetailsService {
 
     private final UserRepository repository;
-    private final RoleService roleService;
+    private final PasswordEncoder passwordEncoder;
 
-    public UserServiceImp(UserRepository repository, RoleService roleService) {
+    public UserServiceImp(UserRepository repository, @Lazy PasswordEncoder passwordEncoder) {
         this.repository = repository;
-        this.roleService = roleService;
+
+        this.passwordEncoder = passwordEncoder;
     }
 
     @Override
@@ -37,6 +43,7 @@ public class UserServiceImp implements UserService {
     @Override
     @Transactional
     public void saveUser(User user) {
+        user.setPassword(passwordEncoder.encode(user.getPassword()));
         repository.save(user);
     }
 
@@ -48,4 +55,10 @@ public class UserServiceImp implements UserService {
     }
 
 
+    @Override
+    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+        User user = getUser(username).orElseThrow(() ->
+                new UsernameNotFoundException(String.format("User %s not found", username)));
+        return user;
+    }
 }
